@@ -1,0 +1,50 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "type": "sskor",
+      "price": 2000,
+      "company": "Nike"
+    },
+    {
+      "id": 2,
+      "type": "T-shirt",
+      "price": 700,
+      "company": "Azar"
+    },
+    {
+      "id": 4,
+      "type": "Byxor",
+      "price": 500,
+      "company": "Team-mate"
+    },
+    {
+      "id": 5,
+      "type": "Underkläder",
+      "price": 100,
+      "company": "Acises"
+    }
+  ],
+  "count": 0,
+  "account": [],
+  "carts": [
+    {
+      "id": 3,
+      "type": "Strumpor",
+      "price": 900,
+      "company": "Addidas"
+    },
+    {
+      "id": 4,
+      "type": "Byxor",
+      "price": 500,
+      "company": "Team-mate"
+    },
+    {
+      "id": 1,
+      "type": "sskor",
+      "price": 2000,
+      "company": "Nike"
+    }
+  ]
+}
