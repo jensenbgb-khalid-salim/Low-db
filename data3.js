@@ -8,6 +8,7 @@ app.use(bodyParser.json())
 
 const low = require('lowdb');
 const FileSync = require('lowdb/adapters/FileSync');
+app.use(express.static('public'));
 
 const adapter = new FileSync("db.json");
 const db = low (adapter);
@@ -16,19 +17,19 @@ const db = low (adapter);
 
 
 // Set some defaults (required if your JSON file is empty)
-db.defaults({ products: [], count: 0, carts: [] }).write();
+db.defaults({ products: [], carts: [] }).write();
 
 console.log('Using read(): ', db.read().value());
 console.log('Using get(): ', db.get('products').value());
 
+/*db.get("products"). push({id:1, type: "skor", price: 2000, company :"Nike", imgUrl: 'https://unsplash.com/photos/164_6wVEHfI' }).write();
 
-/*
-db.get("carts"). push({id:1, type: "sskor", price: 2000, company :"Nike"}).write();
-db.get("carts"). push({id:2, type: "T-shirt", price: 700, company :"Azar"}).write();
-db.get("carts"). push({id:3, type: "Strumpor", price: 900, company :"Addidas"}).write();
+db.get("products"). push({id:2, type: "T-shirt", price: 700, company :"Azar", imgUrl: 'https://unsplash.com/photos/tWOz2_EK5EQ'}).write();
+db.get("products"). push({id:3, type: "Strumpor", price: 900, company :"Addidas", imgUrl:'https://unsplash.com/photos/sYgzIZKxqyA'}).write();
 
-db.get("products"). push({id:4, type: "Byxor", price: 500, company :"Team-mate"}).write();
-db.get("products"). push({id:5, type: "Underkläder", price: 100, company :"Acises"}).write(); */
+db.get("products"). push({id:4, type: "Byxor", price: 500, company :"Team-mate", imgUrl:'https://unsplash.com/photos/17qC7l19hMI'}).write();
+db.get("products"). push({id:5, type: "Underkläder", price: 100, company :"Acises" , imgUrl:'https://unsplash.com/photos/0ceZx9mL6_c'}).write(); 
+*/
 
 app.get(`/api/products/getAll`, (req,res) => {
 
@@ -81,23 +82,16 @@ app.delete(`/api/carts/delete/:id`, (req,res) => {
 
 
  let deletecart = db.get(`carts`).remove({id:parseInt(req.params.id)}).write();
- 
- if (deletecart){
+  res.send( " the proudect is deleted now",deletecart );
 
-  res.send("proudect are deleted", deletecart)
-}
-else {
-
-
-
-  console.log ("this proudect is alredy have been deleted:",deletecart);
-
-
-}
-
-
-  res.send(deletecart);
   console.log(deletecart)
+ 
+
+
+
+
+
+
 
 
 });
